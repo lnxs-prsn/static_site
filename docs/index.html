@@ -33,9 +33,9 @@
     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
   }
   .nav-logo img { height: 42px; }
-  .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
-  .nav-links > li { position: relative; }
-  .nav-links > li > a {
+  nav ul { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+  nav ul > li { position: relative; }
+  nav ul > li > a {
     display: block;
     padding: 0.5rem 0.85rem;
     font-size: 0.85rem;
@@ -46,8 +46,8 @@
     transition: background 0.2s, color 0.2s;
     white-space: nowrap;
   }
-  .nav-links > li > a:hover { background: var(--light); color: var(--primary); }
-  .nav-links > li > a.active { color: var(--primary); font-weight: 600; }
+  nav ul > li > a:hover { background: var(--light); color: var(--primary); }
+  nav ul > li > a[aria-current="page"] { color: var(--primary); font-weight: 600; }
   .dropdown { position: relative; }
   .dropdown-menu {
     display: none;
@@ -114,7 +114,7 @@
   }
 
   /* SECTIONS */
-  .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-inner { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
   .section-label {
     font-size: 0.75rem;
     font-weight: 700;
@@ -123,7 +123,7 @@
     color: var(--accent);
     margin-bottom: 0.75rem;
   }
-  .section h2 {
+  .section-inner h2 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.6rem, 3vw, 2.2rem);
     color: var(--primary);
@@ -170,10 +170,10 @@
   .about-badge p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
   /* DIVIDER */
-  .divider { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
 
   /* ACTIVITIES */
-  .activities-bg { background: var(--light); }
+  .activities-section { background: var(--light); }
   .activities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -188,7 +188,7 @@
     transition: box-shadow 0.2s, transform 0.2s;
   }
   .activity-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.09); transform: translateY(-2px); }
-  .activity-card h4 {
+  .activity-card h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
     color: var(--primary);
@@ -223,8 +223,14 @@
     margin-bottom: 1.5rem;
   }
   .footer-logo img { height: 40px; filter: brightness(10); opacity: 0.85; }
-  .footer-info { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; }
-  .footer-info span { display: flex; align-items: center; gap: 0.4rem; }
+  address {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    font-style: normal;
+  }
+  address span { display: flex; align-items: center; gap: 0.4rem; }
   .footer-bottom {
     max-width: 1100px;
     margin: 0 auto;
@@ -241,110 +247,119 @@
   /* MOBILE NAV */
   .hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; }
   @media (max-width: 900px) {
-    .nav-links { display: none; }
+    nav ul { display: none; }
     .hamburger { display: block; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <!-- Logo here -->
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Nav link 1</a></li>
-    <li><a href="tietoa-jarjestosta.html">Nav link 2</a></li>
-    <li class="dropdown">
-      <a href="#">Nav link 3 ▾</a>
-      <div class="dropdown-menu">
-        <a href="#">Dropdown item 1</a>
-        <a href="#">Dropdown item 2</a>
-        <a href="#">Dropdown item 3</a>
-        <a href="#">Dropdown item 4</a>
-        <a href="#">Dropdown item 5</a>
-        <a href="#">Dropdown item 6</a>
-      </div>
-    </li>
-    <li><a href="#">Nav link 4</a></li>
-    <li><a href="#">Nav link 5</a></li>
-    <li><a href="contact.html">Nav link 6</a></li>
-    <li class="dropdown nav-lang">
-      <a href="#">Language ▾</a>
-      <div class="dropdown-menu">
-        <a href="#">Language 1</a>
-        <a href="#">Language 2</a>
-        <a href="#">Language 3</a>
-      </div>
-    </li>
-  </ul>
-  <button class="hamburger">☰</button>
-</nav>
+<header>
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Homepage">
+      <!-- Logo here -->
+    </a>
+    <ul role="list">
+      <li><a href="index.html" aria-current="page">Nav link 1</a></li>
+      <li><a href="tietoa-jarjestosta.html">Nav link 2</a></li>
+      <li class="dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">Nav link 3 ▾</a>
+        <ul class="dropdown-menu" role="list">
+          <li><a href="#">Dropdown item 1</a></li>
+          <li><a href="#">Dropdown item 2</a></li>
+          <li><a href="#">Dropdown item 3</a></li>
+          <li><a href="#">Dropdown item 4</a></li>
+          <li><a href="#">Dropdown item 5</a></li>
+          <li><a href="#">Dropdown item 6</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Nav link 4</a></li>
+      <li><a href="#">Nav link 5</a></li>
+      <li><a href="contact.html">Nav link 6</a></li>
+      <li class="dropdown nav-lang">
+        <a href="#" aria-haspopup="true" aria-expanded="false" aria-label="Select language">Language ▾</a>
+        <ul class="dropdown-menu" role="list">
+          <li><a href="#" lang="fi">Language 1</a></li>
+          <li><a href="#" lang="sv">Language 2</a></li>
+          <li><a href="#" lang="en">Language 3</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  </nav>
+</header>
 
-<section class="hero">
-  <p class="hero-eyebrow">Eyebrow text</p>
-  <h1>Page title</h1>
-  <p>Hero subtitle or tagline goes here.</p>
-</section>
+<main>
+  <section class="hero" aria-labelledby="hero-heading">
+    <p class="hero-eyebrow" aria-hidden="true">Eyebrow text</p>
+    <h1 id="hero-heading">Page title</h1>
+    <p>Hero subtitle or tagline goes here.</p>
+  </section>
 
-<div class="section">
-  <div class="section-label">Section label</div>
-  <div class="about-grid">
-    <div class="about-text">
-      <h2>Section heading</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <a href="tietoa-jarjestosta.html">Read more</a>
-    </div>
-    <div class="about-badge">
-      <span class="badge-word">Badge word</span>
-      <p>Short supporting text for the badge element goes here. Keep it brief and impactful.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
-<div class="activities-bg">
-  <div class="section">
-    <div class="section-label">Section label</div>
-    <h2>Cards section heading</h2>
-    <div class="activities-grid">
-      <div class="activity-card">
-        <h4>Card title 1</h4>
-        <p>Card description text goes here. Describe the activity, service, or topic briefly.</p>
-        <a href="#">read more →</a>
-      </div>
-      <div class="activity-card">
-        <h4>Card title 2</h4>
-        <p>Card description text goes here. Describe the activity, service, or topic briefly.</p>
-        <a href="#">read more →</a>
-      </div>
-      <div class="activity-card">
-        <h4>Card title 3</h4>
-        <p>Card description text goes here. Describe the activity, service, or topic briefly.</p>
-        <a href="#">read more →</a>
+  <section aria-labelledby="about-heading">
+    <div class="section-inner">
+      <p class="section-label" aria-hidden="true">Section label</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 id="about-heading">Section heading</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a href="tietoa-jarjestosta.html">Read more</a>
+        </div>
+        <aside class="about-badge" aria-label="Highlight">
+          <span class="badge-word">Badge word</span>
+          <p>Short supporting text for the badge element goes here. Keep it brief and impactful.</p>
+        </aside>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+
+  <hr aria-hidden="true">
+
+  <section class="activities-section" aria-labelledby="activities-heading">
+    <div class="section-inner">
+      <p class="section-label" aria-hidden="true">Section label</p>
+      <h2 id="activities-heading">Cards section heading</h2>
+      <ul class="activities-grid" role="list">
+        <li class="activity-card">
+          <h3>Card title 1</h3>
+          <p>Card description text goes here. Describe the activity, service, or topic briefly.</p>
+          <a href="#">Read more <span aria-hidden="true">→</span><span class="sr-only"> about Card title 1</span></a>
+        </li>
+        <li class="activity-card">
+          <h3>Card title 2</h3>
+          <p>Card description text goes here. Describe the activity, service, or topic briefly.</p>
+          <a href="#">Read more <span aria-hidden="true">→</span><span class="sr-only"> about Card title 2</span></a>
+        </li>
+        <li class="activity-card">
+          <h3>Card title 3</h3>
+          <p>Card description text goes here. Describe the activity, service, or topic briefly.</p>
+          <a href="#">Read more <span aria-hidden="true">→</span><span class="sr-only"> about Card title 3</span></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">
+    <a href="index.html" class="footer-logo" aria-label="Homepage">
       <!-- Footer logo here -->
-    </div>
-    <div class="footer-info">
+    </a>
+    <address>
       <span>📍 Address</span>
       <span>📞 Phone number</span>
-      <span>✉️ email@example.com</span>
-    </div>
+      <span>✉️ <a href="mailto:email@example.com">email@example.com</a></span>
+    </address>
   </div>
   <div class="footer-bottom">
-    <span>Copyright © 2026 Organization name | <a href="#">Privacy</a></span>
-    <span>Website by <a href="#">Designer name</a></span>
+    <small>Copyright © 2026 Organization name | <a href="#">Privacy</a></small>
+    <small>Website by <a href="#">Designer name</a></small>
   </div>
 </footer>
+
+<!-- Visually hidden utility class for screen readers -->
+<style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }</style>
 
 </body>
 </html>

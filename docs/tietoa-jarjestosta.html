@@ -33,9 +33,9 @@
     box-shadow: 0 1px 6px rgba(0,0,0,0.06);
   }
   .nav-logo img { height: 42px; }
-  .nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
-  .nav-links > li { position: relative; }
-  .nav-links > li > a {
+  nav ul { display: flex; align-items: center; gap: 0.2rem; list-style: none; }
+  nav ul > li { position: relative; }
+  nav ul > li > a {
     display: block;
     padding: 0.5rem 0.85rem;
     font-size: 0.85rem;
@@ -46,8 +46,8 @@
     transition: background 0.2s, color 0.2s;
     white-space: nowrap;
   }
-  .nav-links > li > a:hover { background: var(--light); color: var(--primary); }
-  .nav-links > li > a.active { color: var(--primary); font-weight: 700; }
+  nav ul > li > a:hover { background: var(--light); color: var(--primary); }
+  nav ul > li > a[aria-current="page"] { color: var(--primary); font-weight: 700; }
   .dropdown { position: relative; }
   .dropdown-menu {
     display: none;
@@ -74,7 +74,7 @@
   .dropdown-menu a:hover { background: var(--light); }
   .nav-lang { font-size: 0.78rem; color: var(--muted); }
   .hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.4rem; }
-  @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: block; } }
+  @media (max-width: 900px) { nav ul { display: none; } .hamburger { display: block; } }
 
   /* PAGE HEADER */
   .page-header {
@@ -108,7 +108,7 @@
   .content-wrap { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
   .content-wrap p { font-size: 0.97rem; line-height: 1.85; color: #444; margin-bottom: 1.25rem; }
 
-  .section-heading {
+  .content-wrap h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     color: var(--primary);
@@ -136,15 +136,16 @@
   .vm-card p { font-size: 0.9rem; line-height: 1.7; color: #555; margin: 0; }
 
   /* QUOTE BLOCK */
-  .quote-block {
+  blockquote.highlight {
     background: var(--primary);
     color: var(--white);
     padding: 2.5rem;
     border-radius: 8px;
     margin: 2.5rem 0;
     text-align: center;
+    border-left: none;
   }
-  .quote-block p {
+  blockquote.highlight p {
     font-family: 'Playfair Display', serif;
     font-size: 1.15rem;
     font-style: italic;
@@ -162,7 +163,7 @@
     padding-bottom: 2rem; margin-bottom: 1.5rem;
   }
   .footer-logo img { height: 40px; filter: brightness(10); opacity: 0.85; }
-  .footer-info { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; }
+  address { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; font-style: normal; }
   .footer-bottom {
     max-width: 1100px; margin: 0 auto;
     display: flex; justify-content: space-between;
@@ -174,84 +175,91 @@
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
-    <!-- Logo here -->
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Nav link 1</a></li>
-    <li><a href="tietoa-jarjestosta.html" class="active">Nav link 2</a></li>
-    <li class="dropdown">
-      <a href="#">Nav link 3 ▾</a>
-      <div class="dropdown-menu">
-        <a href="#">Dropdown item 1</a>
-        <a href="#">Dropdown item 2</a>
-        <a href="#">Dropdown item 3</a>
-        <a href="#">Dropdown item 4</a>
-        <a href="#">Dropdown item 5</a>
-        <a href="#">Dropdown item 6</a>
-      </div>
-    </li>
-    <li><a href="#">Nav link 4</a></li>
-    <li><a href="#">Nav link 5</a></li>
-    <li><a href="contact.html">Nav link 6</a></li>
-    <li class="dropdown nav-lang">
-      <a href="#">Language ▾</a>
-      <div class="dropdown-menu">
-        <a href="#">Language 1</a>
-        <a href="#">Language 2</a>
-        <a href="#">Language 3</a>
-      </div>
-    </li>
-  </ul>
-  <button class="hamburger">☰</button>
-</nav>
+<header>
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Homepage">
+      <!-- Logo here -->
+    </a>
+    <ul role="list">
+      <li><a href="index.html">Nav link 1</a></li>
+      <li><a href="tietoa-jarjestosta.html" aria-current="page">Nav link 2</a></li>
+      <li class="dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">Nav link 3 ▾</a>
+        <ul class="dropdown-menu" role="list">
+          <li><a href="#">Dropdown item 1</a></li>
+          <li><a href="#">Dropdown item 2</a></li>
+          <li><a href="#">Dropdown item 3</a></li>
+          <li><a href="#">Dropdown item 4</a></li>
+          <li><a href="#">Dropdown item 5</a></li>
+          <li><a href="#">Dropdown item 6</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Nav link 4</a></li>
+      <li><a href="#">Nav link 5</a></li>
+      <li><a href="contact.html">Nav link 6</a></li>
+      <li class="dropdown nav-lang">
+        <a href="#" aria-haspopup="true" aria-expanded="false" aria-label="Select language">Language ▾</a>
+        <ul class="dropdown-menu" role="list">
+          <li><a href="#" lang="fi">Language 1</a></li>
+          <li><a href="#" lang="sv">Language 2</a></li>
+          <li><a href="#" lang="en">Language 3</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  </nav>
+</header>
 
-<div class="page-header">
-  <div class="page-header-inner">
-    <div class="eyebrow">Eyebrow text</div>
-    <h1>Page heading</h1>
-    <div class="subtitle">Page subtitle or tagline</div>
-  </div>
-</div>
-
-<div class="content-wrap">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-
-  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-
-  <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-
-  <div class="vm-grid">
-    <div class="vm-card">
-      <h3>Card heading 1</h3>
-      <p>Card content goes here. Describe the vision, mission, or other key concept briefly.</p>
-    </div>
-    <div class="vm-card">
-      <h3>Card heading 2</h3>
-      <p>Card content goes here. Describe the vision, mission, or other key concept briefly.</p>
+<main>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow" aria-hidden="true">Eyebrow text</p>
+      <h1>Page heading</h1>
+      <p class="subtitle">Page subtitle or tagline</p>
     </div>
   </div>
 
-  <div class="quote-block">
-    <p>A meaningful quote or highlighted statement goes here. Keep it concise and impactful.</p>
-  </div>
-</div>
+  <article class="content-wrap" aria-labelledby="page-heading">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+
+    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+
+    <section aria-labelledby="vm-heading">
+      <h2 id="vm-heading">Section heading</h2>
+      <div class="vm-grid">
+        <div class="vm-card">
+          <h3>Card heading 1</h3>
+          <p>Card content goes here. Describe the vision, mission, or other key concept briefly.</p>
+        </div>
+        <div class="vm-card">
+          <h3>Card heading 2</h3>
+          <p>Card content goes here. Describe the vision, mission, or other key concept briefly.</p>
+        </div>
+      </div>
+    </section>
+
+    <blockquote class="highlight">
+      <p>A meaningful quote or highlighted statement goes here. Keep it concise and impactful.</p>
+    </blockquote>
+  </article>
+</main>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">
+    <a href="index.html" class="footer-logo" aria-label="Homepage">
       <!-- Footer logo here -->
-    </div>
-    <div class="footer-info">
+    </a>
+    <address>
       <span>📍 Address</span>
       <span>📞 Phone number</span>
-      <span>✉️ email@example.com</span>
-    </div>
+      <span>✉️ <a href="mailto:email@example.com">email@example.com</a></span>
+    </address>
   </div>
   <div class="footer-bottom">
-    <span>Copyright © 2026 Organization name | <a href="#">Privacy</a></span>
-    <span>Website by <a href="#">Designer name</a></span>
+    <small>Copyright © 2026 Organization name | <a href="#">Privacy</a></small>
+    <small>Website by <a href="#">Designer name</a></small>
   </div>
 </footer>
 
