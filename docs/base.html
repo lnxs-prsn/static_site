@@ -64,19 +64,18 @@
     <title>Document</title>
 </head>
 
-<body>
-    <header class="flex flex-row items-center justify-between px-6 py-4">
-        <nav x-data="{isOpen=false}" class="flex flex-row items-center justify-between px-6 py-4"
-            aria-label="Main navigation">
-            <a href="index.html" class="nav-logo" aria-label="Homepage">
-                <!-- Logo here -->
+<body class="bg-gray-50 ">
+    <header class="">
+        <nav x-data="{isOpen: false}" aria-label="Main navigation" class="flex justify-between items-start bg-red-300 ">
+            <a href="index.html" class="items-s" aria-label="Homepage">
+                <!-- Logo here --> Tusmo
             </a>
-            <ul role="list">
+            <ul class="hidden md:flex space-x-6">
                 <li><a href="index.html" aria-current="page">Nav link 1</a></li>
                 <li><a href="tietoa-jarjestosta.html">Nav link 2</a></li>
-                <li class="dropdown">
+                <li class="group ">
                     <a href="#" aria-haspopup="true" aria-expanded="false">Nav link 3 ▾</a>
-                    <ul class="dropdown-menu" role="list">
+                    <ul class="absolute hidden group-hover:flex flex-col" role="list">
                         <li><a href="#">Dropdown item 1</a></li>
                         <li><a href="#">Dropdown item 2</a></li>
                         <li><a href="#">Dropdown item 3</a></li>
@@ -88,16 +87,32 @@
                 <li><a href="#">Nav link 4</a></li>
                 <li><a href="#">Nav link 5</a></li>
                 <li><a href="contact.html">Nav link 6</a></li>
-                <li class="dropdown nav-lang">
-                    <a href="#" aria-haspopup="true" aria-expanded="false" aria-label="Select language">Language ▾</a>
-                    <ul class="dropdown-menu" role="list">
-                        <li><a href="#" lang="fi">Language 1</a></li>
-                        <li><a href="#" lang="sv">Language 2</a></li>
-                        <li><a href="#" lang="en">Language 3</a></li>
+
+
+            </ul>
+            <button @click="isOpen = !isOpen" class=" md:hidden focus:outline-none" aria-label="Open menu"
+                aria-expanded="false" aria-controls="nav-menu">☰</button>
+
+            <!-- fix dropdown overlap   for nav link 3  -->
+            <ul x-show="isOpen" x-transition.duration.300ms class="md:hidden flex flex-col space-x-6">
+                <li><a href="index.html" aria-current="page">Nav link 1</a></li>
+                <li><a href="tietoa-jarjestosta.html">Nav link 2</a></li>
+                <li x-data="{dropdownOpen: false}" class="border-t border-gray-200 py-2 ">
+                    <a href="#" @click.prevent="dropdownOpen = !dropdownOpen" class="flex justify-between items-center"
+                        aria-haspopup="true" aria-expanded="false">Nav link 3 ▾</a>
+                    <ul x-show="dropdownOpen" x-transition class="pl-4 mt-2 space-y-2" role="list">
+                        <li><a href="#">Dropdown item 1</a></li>
+                        <li><a href="#">Dropdown item 2</a></li>
+                        <li><a href="#">Dropdown item 3</a></li>
+                        <li><a href="#">Dropdown item 4</a></li>
+                        <li><a href="#">Dropdown item 5</a></li>
+                        <li><a href="#">Dropdown item 6</a></li>
                     </ul>
                 </li>
+                <li><a href="#">Nav link 4</a></li>
+                <li><a href="#">Nav link 5</a></li>
+                <li><a href="contact.html">Nav link 6</a></li>
             </ul>
-            <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
         </nav>
     </header>
     {% block content %}
