@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#3b82f6',    // Your main color
+                        'secondary': '#8b5cf6',  // Your accent color
+                        'dark': '#1f2937',       // Dark text
+                        'light': '#f9fafb',      // Light background
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Add custom CSS for typography -->
+    <style>
+        body {
+            font-family:
+                'Inter',
+                system-ui,
+                -apple-system,
+                sans-serif;
+            color:
+                #1f2937;
+            background:
+                #f9fafb;
+            line-height:
+                1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family:
+                'Poppins',
+                system-ui,
+                sans-serif;
+            font-weight:
+                600;
+            line-height:
+                1.3;
+        }
+
+        /*
+        Optional:
+        Add
+        Google
+        Fonts
+        */
+    </style>
+    <title>Document</title>
+</head>
+
+<body class="bg-gray-50 ">
+    <header class="">
+        <nav x-data="{isOpen: false}" aria-label="Main navigation" class="flex justify-between items-start bg-red-300 ">
+            <a href="index.html" class="items-s" aria-label="Homepage">
+                <!-- Logo here --> Tusmo
+            </a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="index.html" aria-current="page">Nav link 1</a></li>
+                <li><a href="tietoa-jarjestosta.html">Nav link 2</a></li>
+                <li class="group ">
+                    <a href="#" aria-haspopup="true" aria-expanded="false">Nav link 3 ▾</a>
+                    <ul class="absolute hidden group-hover:flex flex-col" role="list">
+                        <li><a href="#">Dropdown item 1</a></li>
+                        <li><a href="#">Dropdown item 2</a></li>
+                        <li><a href="#">Dropdown item 3</a></li>
+                        <li><a href="#">Dropdown item 4</a></li>
+                        <li><a href="#">Dropdown item 5</a></li>
+                        <li><a href="#">Dropdown item 6</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Nav link 4</a></li>
+                <li><a href="#">Nav link 5</a></li>
+                <li><a href="contact.html">Nav link 6</a></li>
+
+
+            </ul>
+            <button @click="isOpen = !isOpen" class=" md:hidden focus:outline-none" aria-label="Open menu"
+                aria-expanded="false" aria-controls="nav-menu">☰</button>
+
+            <!-- fix dropdown overlap   for nav link 3  -->
+            <ul x-show="isOpen" x-transition.duration.300ms class="md:hidden flex flex-col space-x-6">
+                <li><a href="index.html" aria-current="page">Nav link 1</a></li>
+                <li><a href="tietoa-jarjestosta.html">Nav link 2</a></li>
+                <li x-data="{dropdownOpen: false}" class="border-t border-gray-200 py-2 ">
+                    <a href="#" @click.prevent="dropdownOpen = !dropdownOpen" class="flex justify-between items-center"
+                        aria-haspopup="true" aria-expanded="false">Nav link 3 ▾</a>
+                    <ul x-show="dropdownOpen" x-transition class="pl-4 mt-2 space-y-2" role="list">
+                        <li><a href="#">Dropdown item 1</a></li>
+                        <li><a href="#">Dropdown item 2</a></li>
+                        <li><a href="#">Dropdown item 3</a></li>
+                        <li><a href="#">Dropdown item 4</a></li>
+                        <li><a href="#">Dropdown item 5</a></li>
+                        <li><a href="#">Dropdown item 6</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Nav link 4</a></li>
+                <li><a href="#">Nav link 5</a></li>
+                <li><a href="contact.html">Nav link 6</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br>
+    <main>
+
+
+        <div class=" flex justify-center  items-end gap-12 shadow-lg">
+
+
+            <section class="contact-info w-1/4" aria-labelledby="contact-info-heading">
+
+                <h2 id="contact-info-heading">Contact heading</h2>
+                <p class="w-3/4">Introductory text about how to get in touch. Keep it friendly and informative.</p>
+
+                <div class="flex flex-col gap-4">
+                    <h3>Contact group label 1</h3>
+                    <div class="flex flex-col gap-4">
+                        <strong>Organization name</strong>
+                        <address>
+                            <span>Street address, Postal code, City</span>
+                            <a href="mailto:email@example.com">email@example.com</a>
+                            <a href="tel:0000000000">000 000 0000</a>
+                        </address>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <strong>Contact person name</strong>
+                        <span>Job title</span>
+                        <address>
+                            <a href="mailto:name@example.com">name@example.com</a>
+                            <a href="tel:0000000000">000 000 0000</a>
+                        </address>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="flex flex-col gap-8" aria-labelledby="contact-form-heading">
+                <h2 id="contact-form-heading">Send us a message</h2>
+                <form method="post" action="#" novalidate class="flex flex-col gap-4">
+                    <div class="form-group">
+                        <label for="contact-name">Name <span class="req" aria-hidden="true">*</span><span
+                                class="sr-only">(required)</span></label>
+                        <input type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email <span class="req" aria-hidden="true">*</span><span
+                                class="sr-only">(required)</span></label>
+                        <input type="email" id="contact-email" name="email" placeholder="your@email.com"
+                            autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-phone">Phone <span class="req" aria-hidden="true">*</span><span
+                                class="sr-only">(required)</span></label>
+                        <input type="tel" id="contact-phone" name="phone" placeholder="+000 ..." autocomplete="tel"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message <span class="req" aria-hidden="true">*</span><span
+                                class="sr-only">(required)</span></label>
+                        <textarea id="contact-message" name="message" placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit"
+                        class=" rounded-lg focus-shadow-2 text-white bg-blue-900 hover:bg-blue-400">SEND</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
