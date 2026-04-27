@@ -66,7 +66,8 @@
 
 <body class="bg-gray-50 ">
     <header class="">
-        <nav x-data="{isOpen: false}" aria-label="Main navigation" class="flex justify-between items-start bg-red-300 ">
+        <nav x-data="{isOpen: false}" aria-label="Main navigation"
+            class="flex justify-between items-start bg-red-300  sticky top-0 shadow-md z-10">
             <a href="index.html" class="items-s" aria-label="Homepage">
                 <!-- Logo here --> Tusmo
             </a>
@@ -119,7 +120,22 @@
 
     {% endblock %}
 
-
+    <footer>
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo" aria-label="Homepage">
+                <!-- Footer logo here -->
+            </a>
+            <address>
+                <span>📍 Address</span>
+                <span>📞 Phone number</span>
+                <span>✉️ <a href="mailto:email@example.com">email@example.com</a></span>
+            </address>
+        </div>
+        <div class="footer-bottom">
+            <small>Copyright © 2026 Organization name | <a href="#">Privacy</a></small>
+            <small>Website by <a href="#">Designer name</a></small>
+        </div>
+    </footer>
 </body>
 
 </html>
