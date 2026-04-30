@@ -1,0 +1,109 @@
+
+<style>
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:10px}
+.num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.sub{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .85rem}
+.sub-name{font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);font-weight:500;margin-bottom:4px}
+.sub-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.new{font-size:10px;font-weight:500;background:#E1F5EE;color:#085041;padding:1px 6px;border-radius:3px;margin-left:5px;vertical-align:middle}
+</style>
+
+<h2 class="sr-only">What lives inside each of the 8 Tailwind sections</h2>
+
+<div class="card">
+  <div class="num">1 — Spacing</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">padding sides</div><div class="sub-desc">pt, pr, pb, pl — target one edge at a time</div></div>
+    <div class="sub"><div class="sub-name">margin sides</div><div class="sub-desc">mt, mr, mb, ml — push from one specific side</div></div>
+    <div class="sub"><div class="sub-name">auto margin</div><div class="sub-desc">mx-auto — center a block inside its parent</div></div>
+    <div class="sub"><div class="sub-name">negative margin<span class="new">new</span></div><div class="sub-desc">-mt-4 — pull the element up, overlap things</div></div>
+    <div class="sub"><div class="sub-name">space-between<span class="new">new</span></div><div class="sub-desc">space-x-* / space-y-* — add margin between children without touching the parent</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">2 — Flexbox</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">direction</div><div class="sub-desc">flex-row, flex-col and their reverse variants</div></div>
+    <div class="sub"><div class="sub-name">wrapping<span class="new">new</span></div><div class="sub-desc">flex-wrap — when children don't fit, drop to next line instead of squishing</div></div>
+    <div class="sub"><div class="sub-name">grow &amp; shrink<span class="new">new</span></div><div class="sub-desc">flex-1, flex-none, flex-auto — how much a child stretches or holds its size</div></div>
+    <div class="sub"><div class="sub-name">order<span class="new">new</span></div><div class="sub-desc">order-first, order-last — reorder visually without changing the HTML</div></div>
+    <div class="sub"><div class="sub-name">self-align<span class="new">new</span></div><div class="sub-desc">self-start, self-end — override alignment for one specific child</div></div>
+    <div class="sub"><div class="sub-name">justify &amp; align</div><div class="sub-desc">justify-*, items-*, place-* — where things sit on each axis</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">3 — Grid</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">columns</div><div class="sub-desc">grid-cols-* — how many equal slots per row</div></div>
+    <div class="sub"><div class="sub-name">spanning</div><div class="sub-desc">col-span-*, row-span-* — stretch an item across slots</div></div>
+    <div class="sub"><div class="sub-name">auto flow<span class="new">new</span></div><div class="sub-desc">grid-flow-row/col — which direction new items get placed</div></div>
+    <div class="sub"><div class="sub-name">custom sizing<span class="new">new</span></div><div class="sub-desc">grid-cols-[200px,1fr] — mix fixed and flexible slot widths</div></div>
+    <div class="sub"><div class="sub-name">placement<span class="new">new</span></div><div class="sub-desc">col-start-2, col-end-4 — pin an item to a specific position</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">4 — Typography</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">size</div><div class="sub-desc">text-xs → text-9xl — the font size dial</div></div>
+    <div class="sub"><div class="sub-name">weight</div><div class="sub-desc">font-thin → font-black — how heavy letters feel</div></div>
+    <div class="sub"><div class="sub-name">line height</div><div class="sub-desc">leading-* — breathing room between lines</div></div>
+    <div class="sub"><div class="sub-name">letter spacing</div><div class="sub-desc">tracking-* — breathing room between letters</div></div>
+    <div class="sub"><div class="sub-name">alignment<span class="new">new</span></div><div class="sub-desc">text-left, text-center, text-right, text-justify</div></div>
+    <div class="sub"><div class="sub-name">decoration<span class="new">new</span></div><div class="sub-desc">underline, line-through, no-underline — marks on the text</div></div>
+    <div class="sub"><div class="sub-name">overflow<span class="new">new</span></div><div class="sub-desc">truncate, text-ellipsis, line-clamp-* — what happens when text doesn't fit</div></div>
+    <div class="sub"><div class="sub-name">transform<span class="new">new</span></div><div class="sub-desc">uppercase, lowercase, capitalize — change case without editing HTML</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">5 — Color</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">background</div><div class="sub-desc">bg-* — paint the box</div></div>
+    <div class="sub"><div class="sub-name">text color</div><div class="sub-desc">text-* — paint the letters</div></div>
+    <div class="sub"><div class="sub-name">border color</div><div class="sub-desc">border-* — paint the outline</div></div>
+    <div class="sub"><div class="sub-name">opacity<span class="new">new</span></div><div class="sub-desc">bg-blue-500/50 — make any color semi-transparent with a slash</div></div>
+    <div class="sub"><div class="sub-name">ring color<span class="new">new</span></div><div class="sub-desc">ring-* — a glowing outline used for focus states</div></div>
+    <div class="sub"><div class="sub-name">divide color<span class="new">new</span></div><div class="sub-desc">divide-* — automatic border lines between children</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">6 — Sizing</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">fixed width</div><div class="sub-desc">w-4, w-16 — always this exact size</div></div>
+    <div class="sub"><div class="sub-name">relative width</div><div class="sub-desc">w-1/2, w-full — based on the parent</div></div>
+    <div class="sub"><div class="sub-name">min / max<span class="new">new</span></div><div class="sub-desc">min-w-*, max-w-* — set a floor or ceiling on how wide it can get</div></div>
+    <div class="sub"><div class="sub-name">height</div><div class="sub-desc">h-*, min-h-*, max-h-* — same idea applied vertically</div></div>
+    <div class="sub"><div class="sub-name">aspect ratio<span class="new">new</span></div><div class="sub-desc">aspect-video, aspect-square — keep width and height in proportion automatically</div></div>
+    <div class="sub"><div class="sub-name">container<span class="new">new</span></div><div class="sub-desc">container mx-auto — a box that caps its own width and centers on the page</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">7 — Borders &amp; Shadows</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">border width</div><div class="sub-desc">border, border-2, border-t — thickness and which sides</div></div>
+    <div class="sub"><div class="sub-name">border style<span class="new">new</span></div><div class="sub-desc">border-solid, border-dashed, border-dotted — the line pattern</div></div>
+    <div class="sub"><div class="sub-name">rounded corners</div><div class="sub-desc">rounded-sm → rounded-full — how soft the corners feel</div></div>
+    <div class="sub"><div class="sub-name">shadow<span class="new">new</span></div><div class="sub-desc">shadow-sm → shadow-2xl — lift the element off the page visually</div></div>
+    <div class="sub"><div class="sub-name">ring<span class="new">new</span></div><div class="sub-desc">ring-2, ring-offset-2 — outline outside the border, common for focus</div></div>
+    <div class="sub"><div class="sub-name">outline<span class="new">new</span></div><div class="sub-desc">outline-none, outline-2 — browser's native outline, usually removed on inputs</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">8 — Responsive &amp; States</div>
+  <div class="sub-grid">
+    <div class="sub"><div class="sub-name">breakpoints</div><div class="sub-desc">sm: md: lg: xl: — apply a class only above a certain screen width</div></div>
+    <div class="sub"><div class="sub-name">hover / focus</div><div class="sub-desc">hover: focus: — apply when the user interacts</div></div>
+    <div class="sub"><div class="sub-name">dark mode</div><div class="sub-desc">dark: — apply only when the OS is in dark mode</div></div>
+    <div class="sub"><div class="sub-name">group<span class="new">new</span></div><div class="sub-desc">group + group-hover: — when you hover the parent, style a child</div></div>
+    <div class="sub"><div class="sub-name">peer<span class="new">new</span></div><div class="sub-desc">peer + peer-checked: — when a sibling changes state, style another sibling</div></div>
+    <div class="sub"><div class="sub-name">active / disabled<span class="new">new</span></div><div class="sub-desc">active: disabled: — while pressing, or when the element is turned off</div></div>
+    <div class="sub"><div class="sub-name">first / last<span class="new">new</span></div><div class="sub-desc">first: last: — target only the first or last child in a list</div></div>
+  </div>
+</div>

@@ -1,0 +1,212 @@
+
+<style>
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:10px}
+.num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.brain-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .85rem;margin-bottom:10px}
+.brain-row{font-size:13px;color:var(--color-text-secondary);line-height:1.9;margin:0}
+.kw{font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tag{font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}
+.demo-label{font-size:11px;color:var(--color-text-tertiary);margin-bottom:6px}
+.demo{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px}
+.box{display:flex;align-items:center;justify-content:center;border-radius:4px;font-family:var(--font-mono);font-size:11px}
+</style>
+
+<h2 class="sr-only">Tailwind CSS — 8 sections with everyday-language mental models</h2>
+
+<div class="card">
+  <div class="num">1 — Spacing</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">p-*</span> = "bubble of air around the content inside the box"</p>
+    <p class="brain-row"><span class="kw">m-*</span> = "push other things away from the outside of the box"</p>
+    <p class="brain-row"><span class="kw">gap-*</span> = "breathing room between children — the spacing engine"</p>
+  </div>
+  <div class="tags">
+    <span class="tag">p-2</span><span class="tag">p-4</span><span class="tag">px-6</span><span class="tag">py-2</span>
+    <span class="tag">m-4</span><span class="tag">mt-8</span><span class="tag">mx-auto</span>
+    <span class="tag">gap-2</span><span class="tag">gap-4</span><span class="tag">gap-x-6</span>
+  </div>
+  <div class="demo-label">same three boxes — gap-2 vs gap-6:</div>
+  <div class="demo" style="display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;gap:6px;">
+      <div class="box" style="background:#E6F1FB;color:#0C447C;padding:6px 14px;">A</div>
+      <div class="box" style="background:#E6F1FB;color:#0C447C;padding:6px 14px;">B</div>
+      <div class="box" style="background:#E6F1FB;color:#0C447C;padding:6px 14px;">C</div>
+      <span style="font-size:11px;color:var(--color-text-tertiary);align-self:center;margin-left:4px;">gap-2 (tight)</span>
+    </div>
+    <div style="display:flex;gap:24px;">
+      <div class="box" style="background:#E6F1FB;color:#0C447C;padding:6px 14px;">A</div>
+      <div class="box" style="background:#E6F1FB;color:#0C447C;padding:6px 14px;">B</div>
+      <div class="box" style="background:#E6F1FB;color:#0C447C;padding:6px 14px;">C</div>
+      <span style="font-size:11px;color:var(--color-text-tertiary);align-self:center;margin-left:4px;">gap-6 (roomy)</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">2 — Flexbox</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">flex</span> = "turn this box into a row of things"</p>
+    <p class="brain-row"><span class="kw">flex-col</span> = "stack them top to bottom instead"</p>
+    <p class="brain-row"><span class="kw">justify-*</span> = "where do things sit along the main direction"</p>
+    <p class="brain-row"><span class="kw">items-*</span> = "where do things sit across the other direction"</p>
+  </div>
+  <div class="tags">
+    <span class="tag">flex</span><span class="tag">flex-row</span><span class="tag">flex-col</span><span class="tag">flex-wrap</span>
+    <span class="tag">justify-start</span><span class="tag">justify-center</span><span class="tag">justify-between</span>
+    <span class="tag">items-start</span><span class="tag">items-center</span><span class="tag">items-stretch</span>
+    <span class="tag">flex-1</span><span class="tag">flex-none</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+    <div>
+      <div class="demo-label">justify-between — push to edges:</div>
+      <div class="demo" style="display:flex;justify-content:space-between;">
+        <div class="box" style="background:#E1F5EE;color:#085041;padding:5px 10px;">logo</div>
+        <div class="box" style="background:#E1F5EE;color:#085041;padding:5px 10px;">nav</div>
+      </div>
+    </div>
+    <div>
+      <div class="demo-label">items-center — align vertically:</div>
+      <div class="demo" style="display:flex;align-items:center;gap:8px;height:52px;">
+        <div class="box" style="background:#E1F5EE;color:#085041;padding:5px 10px;height:32px;">short</div>
+        <div class="box" style="background:#E1F5EE;color:#085041;padding:5px 10px;height:48px;">tall</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">3 — Grid</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">grid-cols-3</span> = "cut the row into 3 equal slots"</p>
+    <p class="brain-row"><span class="kw">col-span-2</span> = "this item takes up 2 of those slots"</p>
+    <p class="brain-row"><span class="kw">gap-*</span> = same spacing engine — works here too</p>
+  </div>
+  <div class="tags">
+    <span class="tag">grid</span><span class="tag">grid-cols-2</span><span class="tag">grid-cols-3</span><span class="tag">grid-cols-4</span>
+    <span class="tag">col-span-2</span><span class="tag">col-span-full</span><span class="tag">row-span-2</span>
+  </div>
+  <div class="demo-label">3 slots — header stretches across all three:</div>
+  <div class="demo">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">
+      <div class="box" style="grid-column:span 3;background:#FAEEDA;color:#633806;padding:8px;">col-span-full (header)</div>
+      <div class="box" style="background:#FAC775;color:#412402;padding:8px;">slot 1</div>
+      <div class="box" style="background:#FAC775;color:#412402;padding:8px;">slot 2</div>
+      <div class="box" style="background:#FAC775;color:#412402;padding:8px;">slot 3</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">4 — Typography</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">text-sm / text-xl</span> = "turn the font size dial"</p>
+    <p class="brain-row"><span class="kw">font-bold</span> = "how heavy the letters feel"</p>
+    <p class="brain-row"><span class="kw">leading-*</span> = "breathing room between lines"</p>
+    <p class="brain-row"><span class="kw">tracking-*</span> = "breathing room between letters"</p>
+  </div>
+  <div class="tags">
+    <span class="tag">text-xs</span><span class="tag">text-sm</span><span class="tag">text-base</span><span class="tag">text-lg</span><span class="tag">text-2xl</span><span class="tag">text-5xl</span>
+    <span class="tag">font-light</span><span class="tag">font-normal</span><span class="tag">font-medium</span><span class="tag">font-bold</span>
+    <span class="tag">leading-tight</span><span class="tag">leading-relaxed</span><span class="tag">leading-loose</span>
+    <span class="tag">tracking-tight</span><span class="tag">tracking-wide</span>
+  </div>
+  <div class="demo" style="display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:24px;font-weight:500;color:var(--color-text-primary);line-height:1.2">text-2xl font-medium</div>
+    <div style="font-size:14px;font-weight:400;color:var(--color-text-secondary);line-height:1.8">text-sm leading-relaxed — notice the air between lines</div>
+    <div style="font-size:11px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.1em;text-transform:uppercase">text-xs tracking-wide uppercase</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">5 — Color</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">bg-blue-*</span> = "paint the background of the box"</p>
+    <p class="brain-row"><span class="kw">text-blue-*</span> = "paint the letters"</p>
+    <p class="brain-row"><span class="kw">border-blue-*</span> = "paint the outline"</p>
+    <p class="brain-row">The number (50 → 950) = lightness dial. Low = pale, high = deep.</p>
+  </div>
+  <div class="tags">
+    <span class="tag">bg-blue-50</span><span class="tag">bg-blue-500</span><span class="tag">bg-blue-900</span>
+    <span class="tag">text-gray-500</span><span class="tag">text-red-600</span>
+    <span class="tag">border-gray-200</span><span class="tag">border-green-500</span>
+  </div>
+  <div class="demo-label">blue-100 → blue-400 → blue-700 → blue-950:</div>
+  <div style="display:flex;border-radius:6px;overflow:hidden;">
+    <div style="flex:1;height:32px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-size:10px;color:#1e3a5f;font-family:var(--font-mono)">100</div>
+    <div style="flex:1;height:32px;background:#60A5FA;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-family:var(--font-mono)">400</div>
+    <div style="flex:1;height:32px;background:#1D4ED8;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-family:var(--font-mono)">700</div>
+    <div style="flex:1;height:32px;background:#172554;display:flex;align-items:center;justify-content:center;font-size:10px;color:#BFDBFE;font-family:var(--font-mono)">950</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">6 — Sizing</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">w-16</span> = "fixed width — always this size regardless of parent"</p>
+    <p class="brain-row"><span class="kw">w-1/2</span> = "half of whatever the parent is"</p>
+    <p class="brain-row"><span class="kw">w-full</span> = "fill the whole parent"</p>
+    <p class="brain-row"><span class="kw">max-w-lg</span> = "grow freely but stop here"</p>
+  </div>
+  <div class="tags">
+    <span class="tag">w-4</span><span class="tag">w-16</span><span class="tag">w-full</span><span class="tag">w-1/2</span><span class="tag">w-1/3</span><span class="tag">w-screen</span>
+    <span class="tag">h-4</span><span class="tag">h-auto</span><span class="tag">h-screen</span>
+    <span class="tag">max-w-sm</span><span class="tag">max-w-prose</span><span class="tag">min-h-screen</span>
+  </div>
+  <div class="demo" style="display:flex;flex-direction:column;gap:5px;">
+    <div style="width:100%;height:14px;background:#EEEDFE;border-radius:3px;display:flex;align-items:center;padding-left:6px;"><span style="font-size:10px;color:#3C3489;font-family:var(--font-mono)">w-full</span></div>
+    <div style="width:66%;height:14px;background:#AFA9EC;border-radius:3px;display:flex;align-items:center;padding-left:6px;"><span style="font-size:10px;color:#26215C;font-family:var(--font-mono)">w-2/3</span></div>
+    <div style="width:33%;height:14px;background:#7F77DD;border-radius:3px;display:flex;align-items:center;padding-left:6px;"><span style="font-size:10px;color:#fff;font-family:var(--font-mono)">w-1/3</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">7 — Borders &amp; rounded corners</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">border</span> = "put an outline on the box"</p>
+    <p class="brain-row"><span class="kw">border-t</span> = "outline on the top edge only"</p>
+    <p class="brain-row"><span class="kw">rounded-md</span> = "how soft the corners feel"</p>
+    <p class="brain-row"><span class="kw">rounded-full</span> = "corners so round it becomes a pill or circle"</p>
+  </div>
+  <div class="tags">
+    <span class="tag">border</span><span class="tag">border-2</span><span class="tag">border-t</span><span class="tag">border-b</span>
+    <span class="tag">rounded-sm</span><span class="tag">rounded-md</span><span class="tag">rounded-xl</span><span class="tag">rounded-full</span>
+  </div>
+  <div class="demo" style="display:flex;gap:12px;flex-wrap:wrap;">
+    <div style="width:56px;height:56px;border:1px solid var(--color-border-secondary);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-text-tertiary);font-family:var(--font-mono)">sm</div>
+    <div style="width:56px;height:56px;border:1px solid var(--color-border-secondary);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-text-tertiary);font-family:var(--font-mono)">md</div>
+    <div style="width:56px;height:56px;border:1px solid var(--color-border-secondary);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-text-tertiary);font-family:var(--font-mono)">xl</div>
+    <div style="width:80px;height:32px;border:1px solid var(--color-border-secondary);border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-text-tertiary);font-family:var(--font-mono)">full pill</div>
+    <div style="width:32px;height:32px;border:1px solid var(--color-border-secondary);border-radius:9999px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--color-text-tertiary);font-family:var(--font-mono)">o</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="num">8 — Responsive &amp; states</div>
+  <div class="brain-box">
+    <p class="brain-row">🧠 Think of it like:</p>
+    <p class="brain-row"><span class="kw">md:flex-row</span> = "switch to a row — but only on medium screens and wider"</p>
+    <p class="brain-row"><span class="kw">hover:bg-blue-50</span> = "apply this only when the mouse is on top"</p>
+    <p class="brain-row"><span class="kw">dark:bg-gray-800</span> = "apply this only in dark mode"</p>
+    <p class="brain-row">Tailwind is mobile-first — the plain class is the small screen. Prefixes layer on top as the screen grows.</p>
+  </div>
+  <div class="tags">
+    <span class="tag">sm:flex-col</span><span class="tag">md:grid-cols-2</span><span class="tag">lg:text-xl</span>
+    <span class="tag">hover:bg-blue-50</span><span class="tag">focus:ring-2</span><span class="tag">active:scale-95</span>
+    <span class="tag">dark:bg-gray-800</span><span class="tag">disabled:opacity-50</span>
+  </div>
+  <div class="demo-label">how prefixes stack — reading left to right:</div>
+  <div style="display:flex;gap:0;border-radius:var(--border-radius-md);overflow:hidden;font-family:var(--font-mono);font-size:11px;">
+    <div style="flex:1;background:#F1EFE8;color:#2C2C2A;padding:10px 8px;text-align:center;border-right:0.5px solid var(--color-border-tertiary);">flex-col<br><span style="color:#888780;font-size:10px;">all screens</span></div>
+    <div style="flex:1;background:#D3D1C7;color:#2C2C2A;padding:10px 8px;text-align:center;border-right:0.5px solid var(--color-border-tertiary);">sm:flex-row<br><span style="color:#5F5E5A;font-size:10px;">640px+</span></div>
+    <div style="flex:1;background:#B4B2A9;color:#2C2C2A;padding:10px 8px;text-align:center;border-right:0.5px solid var(--color-border-tertiary);">md:gap-8<br><span style="color:#444441;font-size:10px;">768px+</span></div>
+    <div style="flex:1;background:#888780;color:#fff;padding:10px 8px;text-align:center;">lg:text-lg<br><span style="color:#D3D1C7;font-size:10px;">1024px+</span></div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body class="m-0 p-0">
+    <header>
+        <div class="flex justify-between items-start bg-gray-500"> <!-- Flex container for header -->
+            <div>hello</div> <!-- Left side (wrapping in a div is optional but clear) -->
+            <section class="flex flex-row gap-4"> <!-- Right side -->
+                <div>A</div>
+                <div>B</div>
+                <div>C <!-- Removed the stray '>' -->
+                    <div> <!-- Removed empty class -->
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- Closing the flex div after both children -->
+    </header>
+    <main>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-96 "></div>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-64 "></div>
+        <div class="bg-red-500 h-64 "></div>
+
+        <div class="bg-yellow-500 h-96 "></div>
+        <div class="bg-yellow-900 h-96 "></div>
+        <div class="bg-yellow-900 h-96 "></div>
+        <div class="bg-yellow-900 h-96 "></div>
+        <div class="bg-yellow-900 h-96 "></div>
+        <div class="bg-yellow-900 h-96 "></div>
+
+    </main>
+    <footer></footer>
+</body>
+
+</html>
